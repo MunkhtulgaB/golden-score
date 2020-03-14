@@ -70,6 +70,17 @@ def rotate(orig, pivot, angle, axis=0):
 	to_return.insert(axis, invariant)
 	return to_return
 
+translation = (-0.1, 0.22, -0.5)
+pivot = (0,0,0)
+rotation_angle = -(math.pi / 2) * 0.4
+rotation_axis = 0
+
+rotation_angle1 = (math.pi / 2) * 1.8
+rotation_axis1 = 1
+
+rotation_angle2 = (math.pi / 2) * 0.35
+rotation_axis2 = 2
+
 # Read vertices and faces from uke file
 uke_vertices = []
 uke_faces = []
@@ -82,9 +93,24 @@ while True:
     		tokens = nextLine.rstrip().split(" ")[1:]
     		x, y, z = [float(t) for t in tokens]
 
-    		translation = (0.5, 0, 0.5)
-    		pivot = (0,0,0)
-    		tokens[0], tokens[1], tokens[2] = (str(c) for c in translate((x,y,z), translation))
+    		
+    		
+    		tokens[0], tokens[1], tokens[2] = (str(c) for c in \
+                translate(
+                    rotate(
+                        rotate(
+                            rotate( (x, y, z) , pivot, rotation_angle, axis=rotation_axis ),
+                            pivot,
+                            rotation_angle1,
+                            rotation_axis1
+                        ),
+                        pivot,
+                        rotation_angle2,
+                        rotation_axis2
+                    ),
+                    translation
+                )
+            )
     		new = " ".join(['v'] + tokens)
 
     		uke_vertices.append(new + '\n')
@@ -100,5 +126,5 @@ grip.writelines(uke_vertices)
 grip.writelines(tori_faces)
 grip.writelines(uke_faces)
 
-
+print('Gripped model written to:', args.output)
 
