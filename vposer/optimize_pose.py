@@ -2,37 +2,38 @@ import pyredner
 import torch
 import matplotlib.pyplot as plt
 import numpy as np
+import pickle
 from human_body_prior.body_model.body_model_vposer import BodyModelWithPoser
+
+
+NUM_ITERS = 50
+MODEL_NAME = 'tori_osotogari'
 
 # Get the body model
 expr_dir = '../SMPL-X/vposer_v1_0' #'TRAINED_MODEL_DIRECTORY'  in this directory the trained model along with the model code exist
 bm_path =  '../SMPL-X/models/smplx/SMPLX_MALE.npz'#'PATH_TO_SMPLX_model.npz'  obtain from https://smpl-x.is.tue.mpg.de/downloads
 bm = BodyModelWithPoser(bm_path=bm_path, batch_size=1, poser_type='vposer', smpl_exp_dir=expr_dir)
 
-# HERE WAS AN ATTEMPT TO START FROM THE GOOD APPROXIMATION
-# pose_body = [ 0.08749139, -1.030376  , -0.7968941 , -0.59646785, -2.395034  ,
-#   -0.38647613,  1.7464787 ,  2.322542  , -0.05406742,  0.3268399 ,
-#    0.11413634, -0.12440143,  0.22781989,  1.9553049 ,  1.367039  ,
-#   -0.905784  ,  0.07017767, -1.3596315 , -0.4142471 ,  0.4299623 ,
-#    1.7596375 ,  0.28724512, -2.496917  ,  1.1127855 ,  0.17023656,
-#   -0.7269698 ,  0.33199713, -0.85020965, -0.06031673, -0.0870313 ,
-#   -2.131748  , -0.28954616]
+# Start from an approximation loaded from pickled SMPLify-x output
+body_model_path = 'input/source/' + MODEL_NAME + '/'
+body_pickle = open(body_model_path + '000.pkl', 'rb')
+body = pickle.load(body_pickle)
 
- 
-# bm.forward(poZ_body = torch.tensor(pose_body, requires_grad=True))
-
+pose_body = body.get('body_pose')[0]
+poZ_body = torch.tensor(pose_body, requires_grad=True)
+bm.register_parameter('poZ_body', torch.nn.Parameter(poZ_body, requires_grad=True))
 
 
 # Prepare to render
-target_img = pyredner.imread('kouchi_photo_tori.jpg')
+target_img = pyredner.imread('input/targets/' + MODEL_NAME + '.png')
 target = torch.tensor(target_img).double()
-pyredner.imwrite(target.cpu(), 'results/optimize_pose_kouchi_tori_custom_pose/target.png')
+pyredner.imwrite(target.cpu(), 'results/' + MODEL_NAME + '/target.png')
 
 img_dim = (target.shape[0], target.shape[1])
 
-cam_pos = torch.tensor([-0.1, -0.4, 1.4], requires_grad=True)
+cam_pos = torch.tensor([1., 1., 1.], requires_grad=True)
 cam = pyredner.Camera(position = cam_pos,
-                      look_at = torch.tensor([-0.1, -0.4, 0.0]),
+                      look_at = torch.tensor([0.1, -0.4, 0.0]),
                       up = torch.tensor([0.0, 1.0, 0.0]),
                       fov = torch.tensor([45.0]), # in degree
                       clip_near = 1e-2, # needs to > 0
@@ -76,14 +77,14 @@ scene = pyredner.Scene(cam, shapes, materials, area_lights)
 
 
 # Optimise
-optimizer = torch.optim.Adam([bm.poZ_body], lr=1)
-cam_optimizer = torch.optim.Adam([cam_pos])
+optimizer = torch.optim.SGD([bm.poZ_body], lr=1, momentum=0.9, dampening=0.1)
+# cam_optimizer = torch.optim.Adam([cam_pos], lr=1e-3)
 
 render = pyredner.RenderFunction.apply
-for t in range(200):
+for t in range(NUM_ITERS):
     print('iteration:', t)
     optimizer.zero_grad()
-    cam_optimizer.zero_grad()
+    # cam_optimizer.zero_grad()
     # Forward pass: render the image
 
     shape_triangle.vertices = bm.forward().v[0]
@@ -96,13 +97,28 @@ for t in range(200):
     # print(img)
 
     # Save the intermediate render.
-    if t % 10 == 0:
-      pyredner.imwrite(img.cpu(), 'results/optimize_pose_kouchi_tori_custom_pose/iter_{}.png'.format(t))
+    # if t % 10 == 0:
+    pyredner.imwrite(img.cpu(), 'results/' + MODEL_NAME + '/iter_{}.png'.format(t))
     # Compute the loss function. Here it is L2.
     loss = (img - target).pow(2).mean()
     # loss += 0.1 * torch.norm(bm.poZ_body).double()      
-    loss.backward(retain_graph=True)
+    loss.backward()
     print('Loss:', loss.item())
     # Take a gradient descent step.
     optimizer.step()
-    cam_optimizer.step()
+    # cam_optimizer.step()
+
+result_obj = shapes[0]
+result_obj.vertices = result_obj.vertices.detach()
+pyredner.save_obj(result_obj, f'results/' + MODEL_NAME + '/result.obj')
+
+# Save the images and differences.
+pyredner.imwrite(img.cpu(), 'results/' + MODEL_NAME + '/final.exr')
+pyredner.imwrite(img.cpu(), 'results/' + MODEL_NAME + '/final.png')
+pyredner.imwrite(torch.abs(target - img).cpu(), 'results/' + MODEL_NAME + '/final_diff.png')
+
+# Convert the intermediate renderings to a video.
+from subprocess import call
+call(['ffmpeg', '-framerate', '24', '-i',
+    'results/' + MODEL_NAME + '/iter_%d.png', '-vb', '20M',
+    'results/' + MODEL_NAME + '/out.mp4'])
