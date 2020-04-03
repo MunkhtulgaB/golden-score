@@ -1,0 +1,175 @@
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH/judo/stage_III
+Train dataset size 0.06 M
+Validation dataset size 14630
+Test dataset size 291144
+Total Trainable Parameters Count is 0.67 M.
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH/judo/stage_III
+Train dataset size 0.06 M
+Validation dataset size 14630
+Test dataset size 291144
+Total Trainable Parameters Count is 0.67 M.
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH/judo/stage_III
+Train dataset size 0.06 M
+Validation dataset size 14630
+Test dataset size 291144
+Total Trainable Parameters Count is 0.67 M.
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH/judo/stage_III
+Train dataset size 0.06 M
+Validation dataset size 14630
+Test dataset size 291144
+Total Trainable Parameters Count is 0.67 M.
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH/judo/stage_III
+Train dataset size 0.06 M
+Validation dataset size 14630
+Test dataset size 291144
+Total Trainable Parameters Count is 0.67 M.
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH/judo/stage_III
+Train dataset size 0.06 M
+Validation dataset size 14630
+Test dataset size 291144
+Total Trainable Parameters Count is 0.67 M.
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH/judo/stage_III
+Train dataset size 0.06 M
+Validation dataset size 14630
+Test dataset size 291144
+Total Trainable Parameters Count is 0.67 M.
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH/judo/stage_III
+Train dataset size 0.06 M
+Validation dataset size 14630
+Test dataset size 291144
+Total Trainable Parameters Count is 0.67 M.
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH/judo/stage_III
+Train dataset size 0.06 M
+Validation dataset size 14630
+Test dataset size 291144
+Total Trainable Parameters Count is 0.67 M.
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH/judo/stage_III
+Train dataset size 0.06 M
+Validation dataset size 14630
+Test dataset size 291144
+Total Trainable Parameters Count is 0.67 M.
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH/judo/stage_III
+Train dataset size 0.06 M
+Validation dataset size 14630
+Test dataset size 291144
+Total Trainable Parameters Count is 0.67 M.
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH/judo/stage_III
+Train dataset size 0.06 M
+Validation dataset size 14630
+Test dataset size 291144
+Total Trainable Parameters Count is 0.67 M.
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH/judo/stage_III
+Train dataset size 0.06 M
+Validation dataset size 14630
+Test dataset size 291144
+Total Trainable Parameters Count is 0.67 M.
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH/judo/stage_III
+Train dataset size 0.06 M
+Validation dataset size 14630
+Test dataset size 291144
+Total Trainable Parameters Count is 0.67 M.
+
+[judo] 512 H neurons, latentD=32, batch_size=512,  kl_coef = 5.0e-03
+
+Started Training at 2020-02-23_10:57:02 for 10000 epochs
+tensorboard --logdir=training/judo/summaries
+Torch Version: 1.1.0
+0 CUDAs available!
+Training on CPU!!!
+Base dataset_dir is OUTPUT_DATA_PATH/judo/stage_III
+Train dataset size 0.06 M
+Validation dataset size 14630
+Test dataset size 291144
+Total Trainable Parameters Count is 0.67 M.
+
+[judo] 512 H neurons, latentD=32, batch_size=512,  kl_coef = 5.0e-03
+
+Started Training at 2020-02-23_10:58:29 for 10000 epochs
+--- Optimizer learning rate changed from inf to 5.00e-03 ---
+[judo]_TR00_E001 - It 00000 - train: [T:3.89e+02] - [loss_kl = 1.97e-02 | loss_mesh_rec = 2.75e+02 | loss_pose_rec = 1.14e+02]
+[judo]_TR00_E001 - It 00028 - evald: [T:2.70e+01] - [loss_kl = 6.44e-01 | loss_mesh_rec = 2.64e+01] ** 
+[judo]_TR00_E002 - It 00000 - train: [T:2.90e+01] - [loss_kl = 9.07e-01 | loss_mesh_rec = 2.53e+01 | loss_pose_rec = 2.82e+00]
+[judo]_TR00_E002 - It 00028 - evald: [T:1.92e+01] - [loss_kl = 6.21e-01 | loss_mesh_rec = 1.86e+01] ** 
+[judo]_TR00_E003 - It 00000 - train: [T:1.95e+01] - [loss_kl = 8.65e-01 | loss_mesh_rec = 1.75e+01 | loss_pose_rec = 1.10e+00]
+[judo]_TR00_E003 - It 00028 - evald: [T:1.89e+01] - [loss_kl = 6.29e-01 | loss_mesh_rec = 1.83e+01] ** 
+[judo]_TR00_E004 - It 00000 - train: [T:1.81e+01] - [loss_kl = 8.49e-01 | loss_mesh_rec = 1.64e+01 | loss_pose_rec = 8.01e-01]
+[judo]_TR00_E004 - It 00028 - evald: [T:1.66e+01] - [loss_kl = 6.09e-01 | loss_mesh_rec = 1.60e+01] ** 
+[judo]_TR00_E005 - It 00000 - train: [T:1.54e+01] - [loss_kl = 8.02e-01 | loss_mesh_rec = 1.39e+01 | loss_pose_rec = 6.67e-01]
+[judo]_TR00_E005 - It 00028 - evald: [T:1.67e+01] - [loss_kl = 5.86e-01 | loss_mesh_rec = 1.61e+01]
+[judo]_TR00_E006 - It 00000 - train: [T:1.52e+01] - [loss_kl = 8.10e-01 | loss_mesh_rec = 1.38e+01 | loss_pose_rec = 5.91e-01]
