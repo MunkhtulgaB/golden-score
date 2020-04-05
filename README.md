@@ -1,4 +1,4 @@
-# Golden Score - capturing the golden moments of judo!
+# Golden Score - capturing the golden moment in judo!
 
 Tension builds up as a judoka warms up silently. Across the hall is his opponent with whom the judoka trades secret glances. They both have paid their sweat, blood and tears to see each other on the mat today. 
 
