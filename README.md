@@ -38,6 +38,7 @@ Note that the process may require you to do complicated time-consuming environme
       At the end of this step, in the output directory you will have `meshes` where Wavefront OBJ 3D models of the fighters are created. You will also have .pkl files from which you can recover the model objects in the `results` subdirectory. See tutorial on SMPLify-x Github repository for any details (https://github.com/vchoutas/smplify-x). Tested environment: MacOS Mojave
         
 4. (Optional) Optimise each individual model using:
+  
   a. An alternative pose prior distribution. Add the following directory under the directory you installed SMPLify-x and name it vposer_judo:
         ```
         https://github.com/MunkhtulgaB/golden-score/tree/master/vposer_training/training/judo
@@ -50,11 +51,12 @@ Note that the process may require you to do complicated time-consuming environme
         ```
         vposer_ckpt: "../vposer_v1_0"
         ```
+        
   b. Differential Rendering optimisation. The source code to optimise pose of a fighter is provided in:
         ```
         https://github.com/MunkhtulgaB/golden-score/blob/master/vposer/optimize_pose.py
         ```
-Download and change `MODEL_NAME` constant to the name of the model `<input>` you wish to optimise. Then place the .pkl file from the `results` subdirectory mentioned in step 3b in: 
+   Download and change `MODEL_NAME` constant to the name of the model `<input>` you wish to optimise. Then place the .pkl file    from the `results` subdirectory mentioned in step 3b in: 
         ```
         ./input/source/<input>/
         ```
