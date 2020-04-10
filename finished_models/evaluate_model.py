@@ -210,4 +210,4 @@ pyredner.imwrite(img.cpu(), 'evaluation/init.png')
 # Compute the difference and save the images.
 diff = torch.abs(target - img)
 pyredner.imwrite(diff.cpu(), 'evaluation/init_diff.png')
-print(diff.pow(2).sum().item())
+print(diff.pow(2).mean().item())
