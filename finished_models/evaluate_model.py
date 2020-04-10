@@ -41,11 +41,11 @@ import math
 # We first render a target image using redner,
 # then perturb the three vertices and optimize to match the target.
 
-target_img = pyredner.imread('source_images/osoto_tori-removebg.png')
+target_img = pyredner.imread('source_images/tomoenage_tori-removebg.png')
 target = torch.tensor(target_img).double()
 img_dim = (target.shape[0], target.shape[1])
 
-objects = pyredner.load_obj('osotogari.obj', return_objects=True)
+objects = pyredner.load_obj('tomoenage.obj', return_objects=True)
 objects = [objects[0]]
 
 def translate(orig, translation):
@@ -87,10 +87,10 @@ pyredner.set_use_gpu(torch.cuda.is_available())
 # so you should allocate torch tensors in CPU
 
 cam = pyredner.automatic_camera_placement(objects, resolution = img_dim)
-cam.position = torch.tensor(rotate(cam.position, (0, 0, 0), math.pi/9, axis=0	))
-cam.position = torch.tensor(rotate(cam.position, (0, 0, 0), math.pi, axis=1	))
-cam.position = torch.tensor(translate(cam.position, -0.28 * cam.position))
-cam.look_at = cam.look_at + torch.tensor([-0.2, 0.0, -0.1])
+cam.position = torch.tensor(rotate(cam.position, (0, 0, 0), math.pi/2.4, axis=1))
+cam.position = torch.tensor(rotate(cam.position, (0, 0, 0), -math.pi/4, axis=0))
+cam.position = torch.tensor(translate(cam.position, -0.30 * cam.position))
+cam.look_at = cam.look_at + torch.tensor([0., -0.2, -0.2])
 
 # Next, we setup the materials for the scene.
 # All materials in the scene are stored in a single Python list.
@@ -152,7 +152,7 @@ shapes = [shape_triangle, shape_light]
 # Each area light is attached to a shape using shape id, additionally we need to
 # assign the intensity of the light, which is a length 3 double tensor in CPU. 
 light = pyredner.AreaLight(shape_id = 1, 
-                           intensity = torch.tensor([200.0,200.0,200.0]),
+                           intensity = torch.tensor([400.0,400.0,400.0]),
                            two_sided=True,
                            directly_visible=False)
 
