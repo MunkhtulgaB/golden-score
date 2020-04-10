@@ -49,6 +49,7 @@ while True:
 
 # 1. Write the tori vertices
 grip.writelines(tori_vertices)
+grip.writelines(['\n'])
 
 def translate(orig, translation):
 	x, y, z = orig
@@ -70,15 +71,15 @@ def rotate(orig, pivot, angle, axis=0):
 	to_return.insert(axis, invariant)
 	return to_return
 
-translation = (-0.1, 0.22, -0.5)
+translation = (-0.4, 0.05, 0.15)
 pivot = (0,0,0)
-rotation_angle = -(math.pi / 2) * 0.4
-rotation_axis = 0
+rotation_angle = -math.pi/2
+rotation_axis = 1
 
-rotation_angle1 = (math.pi / 2) * 1.8
-rotation_axis1 = 1
+rotation_angle1 = math.pi/7
+rotation_axis1 = 0
 
-rotation_angle2 = (math.pi / 2) * 0.35
+rotation_angle2 = 0
 rotation_axis2 = 2
 
 # Read vertices and faces from uke file
@@ -99,7 +100,12 @@ while True:
                 translate(
                     rotate(
                         rotate(
-                            rotate( (x, y, z) , pivot, rotation_angle, axis=rotation_axis ),
+                            rotate(
+                                (x, y, z) , 
+                                pivot, 
+                                rotation_angle, 
+                                rotation_axis 
+                            ),
                             pivot,
                             rotation_angle1,
                             rotation_axis1
@@ -123,8 +129,11 @@ while True:
 # 3. Write tori faces
 # 4. Write uke faces
 grip.writelines(uke_vertices)
+grip.writelines(['\n'])
 grip.writelines(tori_faces)
+grip.writelines(['\n'])
 grip.writelines(uke_faces)
+grip.writelines(['\n'])
 
 print('Gripped model written to:', args.output)
 
