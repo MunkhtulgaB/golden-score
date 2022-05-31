@@ -3,8 +3,35 @@
   <head>
     <meta charset=utf-8>
     <title>Golden Score</title>
+    <style>
+      .container {
+        width: 80vw;
+        height: 80vh;
+        padding-top: 10vh;
+        padding-bottom: 10vh;
+        padding-left: 10vw;
+      }
+      model-viewer {
+        width: 100%;
+        height: 100%;
+      }
+    </style>
   </head>
   <body>
-    EuroGraphics 2022
+
+
+    <!-- Import the component -->
+    <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+    <!-- Use it like any other HTML element -->
+
+    <div class="container">
+      <model-viewer alt="Judo in 360" 
+      src="finished_models/osotogari.glb" 
+      ar ar-modes="webxr scene-viewer quick-look" 
+      seamless-poster shadow-intensity="1.5" exposure="1.5" auto-rotate>
+      </model-viewer>
+    </div>
+
+
   </body>
 </html>
