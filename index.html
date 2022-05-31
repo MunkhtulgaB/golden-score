@@ -21,8 +21,6 @@
     </style>
   </head>
   <body>
-
-
     <!-- Import the component -->
     <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
     <!-- Use it like any other HTML element -->
@@ -33,7 +31,12 @@
       bounds="tight"
       src="finished_models/osotogari.glb" 
       ar ar-modes="webxr scene-viewer quick-look" 
-      seamless-poster shadow-intensity="1.5" exposure="1.5" auto-rotate>
+      seamless-poster 
+      shadow-intensity="1." 
+      exposure="1.8" 
+      auto-rotate
+      auto-rotate-delay="0"
+      >
       </model-viewer>
     </div>
 
@@ -42,9 +45,12 @@
 
       modelViewerParameters.addEventListener("load", (ev) => {
         let material = modelViewerParameters.model.materials[0];
-        material.pbrMetallicRoughness.setBaseColorFactor([0.93, 0.87, 0.64]);
+        material.pbrMetallicRoughness.setBaseColorFactor([0.98, 0.97, 0.7]);
         material.pbrMetallicRoughness.setMetallicFactor(1);
         material.pbrMetallicRoughness.setRoughnessFactor(0.25);
+
+        const audio = new Audio('finished_models/track.mp3');
+        audio.play();
       })
 
 
