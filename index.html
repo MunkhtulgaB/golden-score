@@ -3,6 +3,11 @@
   <head>
     <meta charset=utf-8>
     <title>Golden Score</title>
+    <link rel="stylesheet" href="style/main.css">
+    <!-- CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="script/fade.js"></script>
     <style>
       body {
         height: 100%;
@@ -11,8 +16,9 @@
       }
       .container {
         position: absolute;
-        width: 100%;
         height: 100%;
+        min-width: 100%;
+        margin: auto;
       }
       model-viewer {
         width: 100%;
@@ -40,6 +46,24 @@
       </model-viewer>
     </div>
 
+    <div class="row slide page">
+      <!-- <img class="hanger" src="images/Waves-removebg-preview.png"> -->
+      
+      <div class="fade" style="padding: 0; position: absolute; left: 3em; bottom: 3em; width: fit-content">
+        
+        <div class="display-1">
+          Golden Score
+        </div>
+        <div class="display-4">
+          A success story
+        </div>
+
+      </div>
+
+    </div>
+
+
+
     <script>
       const modelViewerParameters = document.querySelector("model-viewer#osotogari");
 
@@ -49,8 +73,8 @@
         material.pbrMetallicRoughness.setMetallicFactor(1);
         material.pbrMetallicRoughness.setRoughnessFactor(0.25);
 
-        const audio = new Audio('finished_models/track.mp3');
-        audio.play();
+        // const audio = new Audio('finished_models/track.mp3');
+        // audio.play();
       })
 
 
