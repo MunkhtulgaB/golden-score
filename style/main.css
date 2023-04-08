@@ -1,6 +1,11 @@
+body {
+    overflow-x: hidden;
+}
+
 .page {
     height: 100vh;
     margin-bottom: 20vw;
+    width: 100%;
     /* border: 1px solid red; */
 }
 
